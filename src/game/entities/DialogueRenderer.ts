@@ -62,23 +62,21 @@ export class DialogueRenderer extends Container {
             this.updateLayout(window.innerWidth, window.innerHeight);
         });
     }
+    private async loadTextureFromURL(url: string) {
+        return new Promise<Texture>((resolve, reject) => {
+            const img = new Image();
+            img.crossOrigin = "anonymous"; // Ensure CORS compatibility if needed
+            img.onload = () => {
+                const texture = Texture.from(img);
+                resolve(texture);
+            };
+            img.onerror = (err) => reject(err);
+            img.src = url;
+        });
+    }
 
     private async loadTexture(url: string): Promise<Texture> {
-        // Check cache first
-        if (DialogueRenderer.textureCache.has(url)) {
-            return DialogueRenderer.textureCache.get(url)!;
-        }
-
-        try {
-            // Create and cache texture
-            const texture = await Assets.load(url);
-            DialogueRenderer.textureCache.set(url, texture);
-            return texture;
-        } catch (error) {
-            console.error('Failed to load texture:', error);
-            //throw error;
-            return Texture.from('background-tile');
-        }
+        return await this.loadTextureFromURL(url);
     }
 
     public async setMessages(messages: any[]): Promise<void> {
