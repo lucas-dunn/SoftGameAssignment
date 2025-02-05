@@ -76,7 +76,8 @@ export class DialogueRenderer extends Container {
             return texture;
         } catch (error) {
             console.error('Failed to load texture:', error);
-            throw error;
+            //throw error;
+            return Texture.from('background-tile');
         }
     }
 

@@ -1,6 +1,8 @@
-# Game Developer Assignment
+# Interactive PixiJS Application
 
 A modern interactive application built with PixiJS 8, featuring multiple interactive screens and animations.
+
+[🎮 Live Demo](https://soft-game-assignment.vercel.app/)
 
 ## Features
 
