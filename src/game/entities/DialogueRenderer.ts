@@ -1,4 +1,4 @@
-import { Container, Sprite, Text, Graphics, Texture, Assets } from 'pixi.js';
+import { Container, Sprite, Text, Graphics, Texture } from 'pixi.js';
 import gsap from 'gsap';
 import { DialogueService } from '../../services/DialogueService';
 
